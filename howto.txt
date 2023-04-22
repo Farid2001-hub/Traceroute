@@ -1,0 +1,68 @@
+# installations 
+
+vous auriez besoin uniquement de python3 pour executé le code
+
+## Linux ubuntu : 
+$ sudo apt-get update
+$ sudo apt-get install python3
+## autres distribution de Linux : 
+$ sudo dnf install python3
+
+## windows : 
+installer python sur le site officiel : https://www.python.org/downloads/windows/
+si vous étes sur windows, au plus de python3 vous auriez besoin de winpcap : https://www.winpcap.org/install/
+
+
+#Usage
+  1- unzip le fichier
+  2- Pour lancer le programme rendez vous sur le chemin de route (là ou se trouve tout les  fichiers ,
+ dont Makefile, traceroute.py..) et executer la commande : 
+  sudo make run
+
+une fois cette commande éxecuté le programme se lance et un nouveau fichier (output.txt) qui contient
+ les chemins découverts est crée au plus des interfaces graphiques de la représentation de ces chemins. ces interfaces sont sauvegarder dans le répertoire courant sous forme d’image jpg.
+
+## modification des options d’éxecution
+  1- ouvrir le fichier Makefile 
+  2- aller à la ligne 8 (./venv/bin/python3 traceroute.py) et ajouter une ou plusieurs options parmi
+ les option suivantes : 
+
+    -M    la valeur de ttl maximale
+
+    -f    la premiere valeur de ttl
+
+    -w    le temp d’attente entre l’envoie de deux packet d’exploration
+
+    -q    le nombre de série dans une étape d’éxploration
+
+    -p_tcp   spécifié le numéro de port tcp
+
+    -p_udp   spécifié le numéro de port tcp
+
+    -L    la taille du paquet à envoyé
+
+    -in   le fichier d’entré contenant la liste des adresse ip (une adresse par ligne)
+
+si aucun fichier n’est spécifié, le programme utilisera le fichier input.txt qui se trouve dans le répertoire.
+
+    -n   ne pas faire la résulution du nom de domaine des chemins exploré
+
+exemple 1 : lancer le programme avec un wait time de 3 ms : 
+  1- ouvrir Makefile
+  2- modification de la ligne 8 :  ./venv/bin/python3 traceroute.py -w 3
+  3- sauvegarder les modifications, fermé le fichier et executer : sudo make run
+
+
+exemple 2 : lancer le programme sans résolution de nom :
+  1- ouvrir Makefile
+  2- modification de la ligne 8 :  ./venv/bin/python3 traceroute.py -n
+  3- sauvegarder les modifications, fermé le fichier  et executer : sudo make run 
+
+
+
+Remarque : si vous ne spécifié aucun de ces paramétre , le programme va prendre les valeurs par défauts.
+
+
+
+
+
